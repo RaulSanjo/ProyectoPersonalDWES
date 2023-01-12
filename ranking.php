@@ -101,29 +101,10 @@
     <h1>Ranking votación</h1>
     <div class="rank">
     <?php
-        //Parámetros de conexion
-        $host='localhost';
-        $db='votacion';
-        $user='root';
-        $pass='';
-        // Crear conexion
-        $conexion=new mysqli();
-        $conexion -> connect($host,$user, $pass, $db );
-        // Comprobar que no ha habido ningún error durante la conexión
-        $error=$conexion->connect_errno;
-        //Si hay errores
-        if($error!=null){
-            echo "<p>Error $error conectando a la base de datos: $conexion->connect_error</p>";
-        } else {
-            $sql = 'Select * from votos order by numeroVotos desc, jugador asc';
-            $result = $conexion->query($sql);
-            $i = 1;
-            echo "<hr>";
-            //Por cada linea de la consulta
-                while ($row = $result->fetch_assoc()) {
-                        echo "<p>$i º " . $row['jugador'] . " ( ".$row['numeroVotos']." )</p><hr>";
-                        $i++;
-                    }
+        $i = 1;
+        foreach($jugadores as $jugador){
+        echo "<p>$i º " . $jugador['jugador'] ." ( ".$jugador['numeroVotos']. " )</p><hr>";
+        $i++;
         }
     ?>
     </div>
