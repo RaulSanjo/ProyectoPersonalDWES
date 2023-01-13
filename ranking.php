@@ -112,11 +112,6 @@
         <form method="post" action="inicio.php">
             <button name="inicio">Inicio</button>
         </form>
-        <?php
-            if(isset($_POST['inicio'])){
-                header("Location : inicio.php");
-            }
-        ?>
     </div>
 
 </body>

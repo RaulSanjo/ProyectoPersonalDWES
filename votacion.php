@@ -1,37 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php
-        session_start(); 
-        if (!isset($_SESSION['sesionUsuario'])) {
-            header("Location: inicioSesion.php");
-    } else {
-    if (isset($_POST['enviar']) && isset($_POST['voto'])) {
-        $voto = $_POST['voto'];
-        //Parámetros de conexion
-        $host = 'localhost';
-        $db = 'votacion';
-        $user = 'root';
-        $pass = '';
-        // Crear conexion
-        $conexion = new mysqli();
-        $conexion->connect($host, $user, $pass, $db);
-        // Comprobar que no ha habido ningún error durante la conexión
-        $error = $conexion->connect_errno;
-        //Si hay errores
-        if ($error != null) {
-            echo "<p>Error $error conectando a la base de datos: $conexion->connect_error</p>";
-        } else {
-            $result1 = $conexion->query('update votos set numeroVotos=numeroVotos+1 where jugador="' . $voto . '"');
-            $result2 = $conexion->query('update usuarios set haVotado=1 where nombreUsuario="' . $_SESSION['sesionUsuario'] . '"');
-            header("Location: votoRealizado.php");
-        }
-    }
-    if (isset($_POST['out'])) {
-        session_destroy();
-    }   
-}
-    ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -71,13 +71,13 @@
     </form>
     <?php
         if(isset($_POST['iniciar'])){
-            header("Location: inicioSesion.php");
+            header("Location: controladorInicioSesion.php");
         }
         if(isset($_POST['registrarse'])){
-            header("Location: registro.php");
+            header("Location: controladorRegistro.php");
         }
         if(isset($_POST['rank'])){
-            header("Location: ranking.php");
+            header("Location: controladorRanking.php");
         }
     ?>
 </body>

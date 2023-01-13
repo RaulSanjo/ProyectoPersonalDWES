@@ -80,7 +80,7 @@
 </head>
 <body>
     
-    <form method="post">
+    <form method="get">
     <fieldset>
     <legend>Nombre de usuario</legend>
         <input name="usuario"  required>
@@ -91,78 +91,5 @@
     </fieldset>
         <button name="entrar">Entrar</button>
     </form>
-    <?php  
-        if(isset($_POST['usuario'])){
-            $usuario=$_POST['usuario'];
-        }
-        if(isset($_POST['contraseña'])){
-            $contraseña=$_POST['contraseña'];
-        }
-        //Parámetros de conexion
-        $host='localhost';
-        $db='votacion';
-        $user='root';
-        $pass='';
-        // Crear conexion
-        $conexion=new mysqli();
-        $conexion -> connect($host,$user, $pass, $db );
-        // Comprobar que no ha habido ningún error durante la conexión
-        $error=$conexion->connect_errno;
-        //Si hay errores
-        if($error!=null){
-            echo "<p>Error $error conectando a la base de datos: $conexion->connect_error</p>";
-        }else{
-            $usuarioExistente=false;
-            if(isset($_POST['entrar'])){
-                
-                //Consulta sql
-                $sql='Select nombreUsuario from usuarios';
-                $result=$conexion->query($sql);
-                //Si devuelve algun resultado
-                if($result->num_rows>0){
-                    //Por cada linea de la consulta
-                    while($row = $result->fetch_assoc()) {
-                        if($usuario==$row['nombreUsuario']) {
-                            $usuarioExistente=true;
-                        }
-                    }
-                }
-                if($usuarioExistente==true){
-                    $contraseña=md5($contraseña);
-                    //Consulta sql
-                    $sql= "SELECT contraseña from usuarios where nombreUsuario='".$usuario."'";
-                    $result=$conexion->query($sql);
-                    if($result->num_rows>0){
-                        //Por cada linea de la consulta
-                        while($row = $result->fetch_assoc()) {
-                            if($contraseña==$row['contraseña']) {
-                                session_start();
-                                $_SESSION['sesionUsuario']=$usuario;
-                                $sql= "SELECT haVotado from usuarios where nombreUsuario='".$usuario."'";
-                                $result=$conexion->query($sql);
-                                while ($row = $result->fetch_assoc()) {
-                                    if($row['haVotado']==0){
-                                        header("Location: votacion.php"); 
-                                    }else{
-                                        header("Location: haVotado.php");
-                                    }
-                                }
-                            }else{
-                                echo'<script type="text/javascript">
-                                    alert("Contraseña incorrecta");
-                                    window.location.href="inicioSesion.php";
-                                    </script>';
-                            }
-                        }
-                    }
-                }else{
-                    echo'<script type="text/javascript">
-                        alert("El usuario no existe");
-                        window.location.href="inicioSesion.php";
-                        </script>';
-                }
-            }
-        }
-    ?>
 </body>
 </html>
