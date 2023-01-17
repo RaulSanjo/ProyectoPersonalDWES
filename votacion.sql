@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-12-2022 a las 08:33:21
+-- Tiempo de generación: 17-01-2023 a las 09:45:02
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -38,7 +38,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`nombreUsuario`, `contraseña`, `haVotado`) VALUES
-('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0);
+('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0),
+('pepu', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 -- --------------------------------------------------------
 
@@ -56,17 +57,17 @@ CREATE TABLE `votos` (
 --
 
 INSERT INTO `votos` (`jugador`, `numeroVotos`) VALUES
-('Bellingham', 10),
-('Camavinga', 4),
-('E. Fernández', 13),
-('G. Ramos', 5),
+('Bellingham', 13),
+('Camavinga', 7),
+('E. Fernández', 14),
+('G. Ramos', 10),
 ('Gravenberch', 4),
-('Moukoko', 1),
-('Musiala', 16),
+('Moukoko', 3),
+('Musiala', 15),
 ('Pablo Gavi', 9),
-('Pedri', 7),
-('Phil Foden', 6),
-('Rafael Leão', 5),
+('Pedri', 8),
+('Phil Foden', 10),
+('Rafael Leão', 11),
 ('Xavi Simons', 0);
 
 --

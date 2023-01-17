@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rakkas&display=swap" rel="stylesheet">
-    <title>MUNDIAL</title>
-    <style>
-        body{
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@600&family=Rakkas&display=swap');
+body{
             height: 100vh;
             width: 100vw;
             display: grid;
@@ -59,26 +50,3 @@
             border: white 3px solid ;
             box-shadow: rgba(183,36,91,1) 0 0 0 3px, rgba(183,36,91,.6) 0 0 0 6px, rgba(183,36,91,.4) 0 0 0 9px, rgba(255,255,255,.3) 0 0 0 13px;
         }
-        
-    </style>
-</head>
-<body>
-    <h1>INICIO</h1>
-    <form method="post">
-        <button id="in" name="iniciar">Iniciar sesión</button>
-        <button id="rg" name="registrarse">Registrarse</button>
-        <button id="rk" name="rank">Ver ranking</button>
-    </form>
-    <?php
-        if(isset($_POST['iniciar'])){
-            header("Location: inicioSesion.php");
-        }
-        if(isset($_POST['registrarse'])){
-            header("Location: registro.php");
-        }
-        if(isset($_POST['rank'])){
-            header("Location: ranking.php");
-        }
-    ?>
-</body>
-</html>
