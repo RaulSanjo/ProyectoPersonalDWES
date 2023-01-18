@@ -31,7 +31,10 @@ include "bd.php";
                         return false;
                     }
                 }
+            }else{
+                return 0;
             }
+        $bd->cerrarConexion();
         }
 
         public static function haVotado($nombre){
@@ -39,26 +42,31 @@ include "bd.php";
             $bd->crearConexion();
             $result=$bd->dataQuery("SELECT haVotado from usuarios where nombreUsuario='$nombre'");
             while ($row = $result->fetch_assoc()) {
-            if($row['haVotado'] == "1"){
-                return true;
-            }else{
-                header("Location: ./../Vistas/haVotado.php");
+                if($row['haVotado'] == "1"){
+                    return true;
+                }else{
+                    return false;
+                }
             }
-        }
+            $bd->cerrarConexion();
         }
         public static function iniciarSesion(){
             $nombre = $_REQUEST['usuario'];
             $contraseña = $_REQUEST['contraseña'];
-            if (!Usuario::haVotado($nombre)) {
+            if (Usuario::buscarUsuario($nombre)) {
                 if (Usuario::verificarContrasena($nombre, $contraseña)) {
-                    session_start();
-                    $_SESSION['sesionUsuario'] = $nombre;
-                    header("Location: ./../Controladores/controladorVotacion.php");
+                    if (!Usuario::haVotado($nombre)) {
+                        session_start();
+                        $_SESSION['sesionUsuario'] = $nombre;
+                        header("Location: ./../Controladores/controladorVotacion.php");
+                    } else {
+                        header("Location: ./../Controladores/controladorHaVotado.php");
+                    }  
                 } else {
                     echo "<p>Contraseña incorrecta</p>";
                 }
             }else{
-                echo "<p>Este usuario ya ha votado</p>";
+                echo "<p>El usuario no existe</p>";
             }
         }
         public static function insertarUsuario(){
@@ -77,7 +85,8 @@ include "bd.php";
                 }
             }else{
                 echo "<p class='msg'>El usuario ya existe</p>";
-            }  
+            }
+            $bd->cerrarConexion();  
         }
     }
 ?>

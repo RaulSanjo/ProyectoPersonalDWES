@@ -71,3 +71,18 @@ fieldset {
     border-color: #B7245B;
     border-width: 8px;
 }
+
+p {
+    margin: auto;
+    position: absolute;
+    top: 72vh;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    color: white;
+    background-color: black;
+    padding: 1rem;
+    border: 5px solid #B7245B;
+    border-radius: 10px;
+    font-family: 'Orbitron', sans-serif;
+}

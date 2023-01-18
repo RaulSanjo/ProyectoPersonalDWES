@@ -4,7 +4,7 @@
         header("Location: ./../Controladores/controladorInicioSesion.php");
     }else{
     include "./../Modelos/modelVotos.php";
-    include "./../Vistas/votacion.php";
+    include "./../Vistas/votacion.html";
 
         if (isset($_GET['enviar'])) {
             VotosJugadores::realizarVoto($_SESSION['sesionUsuario']);

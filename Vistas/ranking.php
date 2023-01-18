@@ -19,7 +19,7 @@
     ?>
     </div>
     <div>
-        <form method="post" action="./../Vistas/inicio.php">
+        <form method="post" action="./../Controladores/controladorInicio.php">
             <button name="inicio">Inicio</button>
         </form>
     </div>

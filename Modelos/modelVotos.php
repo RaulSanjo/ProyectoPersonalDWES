@@ -7,6 +7,7 @@ class VotosJugadores{
         $jugador = $_REQUEST['voto'];
         $bd->dataManipulation("update votos set numeroVotos=numeroVotos+1 where jugador='$jugador'"); 
         $bd->dataManipulation('update usuarios set haVotado=1 where nombreUsuario="' . $usuario . '"');
+        $bd->cerrarConexion();
     }
     public static function getVotos()
     {
@@ -17,6 +18,7 @@ class VotosJugadores{
         while ($row = $result->fetch_array()) {
             $jugadores[] = $row;
         }
+        $bd->cerrarConexion();
         return $jugadores;
     }
 }

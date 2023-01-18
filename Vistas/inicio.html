@@ -14,16 +14,5 @@
         <button id="rg" name="registrarse">Registrarse</button>
         <button id="rk" name="rank">Ver ranking</button>
     </form>
-    <?php
-        if(isset($_POST['iniciar'])){
-            header("Location: ./../Controladores/controladorInicioSesion.php");
-        }
-        if(isset($_POST['registrarse'])){
-            header("Location: ./../Controladores/controladorRegistro.php");
-        }
-        if(isset($_POST['rank'])){
-            header("Location: ./../Controladores/controladorRanking.php");
-        }
-    ?>
 </body>
 </html>

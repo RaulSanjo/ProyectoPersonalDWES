@@ -11,7 +11,7 @@ body {
 }
 
 form {
-    margin: 0;
+    margin: .5rem;
     border: 20px ridge #B7245B;
     height: fit-content;
     width: fit-content;

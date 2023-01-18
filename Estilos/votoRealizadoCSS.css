@@ -57,5 +57,6 @@ p {
     color: white;
     font-family: 'Orbitron', sans-serif;
     background-color: rgba(0, 0, 0, .5);
-    padding: .3rem;
+    border-radius: 0 50px;
+    padding: 1rem 3rem;
 }

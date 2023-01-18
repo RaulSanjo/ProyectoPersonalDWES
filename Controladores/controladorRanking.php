@@ -3,6 +3,6 @@
     $jugadores = VotosJugadores::getVotos();
     include "./../Vistas/ranking.php";
     if(isset($_POST['inicio'])){
-        header("Location : ./../Vistas/inicio.php");
+        header("Location : ./../Controladores/controladorInicio.php");
     }
 ?>
