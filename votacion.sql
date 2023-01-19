@@ -39,7 +39,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`nombreUsuario`, `contraseña`, `haVotado`) VALUES
 ('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0),
-('pepu', '81dc9bdb52d04dc20036dbd8313ed055', 1);
+('pepu', '81dc9bdb52d04dc20036dbd8313ed055', 0);
 
 -- --------------------------------------------------------
 

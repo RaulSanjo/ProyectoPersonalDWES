@@ -20,8 +20,9 @@ form {
     background-repeat: no-repeat;
     background-size: cover;
     padding: 2rem;
-    border: 15px solid white;
+    border: 20px solid white;
     border-radius: 2rem;
+    box-shadow: 0 0 0 30px black;
 }
 
 form * {
@@ -47,7 +48,7 @@ p {
     font-weight: bolder;
     background-color: rgba(255, 255, 255, .9);
     padding: .2em .3rem .5rem;
-    border-radius: 15px;
+    border-radius: 5px;
     height: fit-content;
     width: fit-content;
     font-size: 70%;
@@ -60,8 +61,11 @@ h1 {
     font-size: 3em;
     padding: .5rem;
     font-family: 'Orbitron', sans-serif;
-    border: 8px solid black;
+    border: 8px solid #B7245B;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 0 8px black;
     margin-bottom: 2rem;
+    text-shadow: 5px 3px 4px #B7245B;
 }
 
 button {
