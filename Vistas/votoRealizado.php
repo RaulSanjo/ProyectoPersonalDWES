@@ -8,16 +8,17 @@
     <title>Qatar 2022</title>
     <?php
         session_start();
+        //elimino la sesion 
         session_destroy();
     ?>
 </head>
 <body>
     <p>Su voto ha sido realizado correctamente.</p>
     <div>
-        <form method="post" action="./../Controladores/controladorInicio.php">
+        <form method="post" action="./../index.php">
             <button name="inicio">Inicio</button>
         </form>
-        <form method="post" action="./../Controladores/controladorRanking.php">
+        <form method="post" action="../Controladores/controladorRanking.php">
             <button name="verRank">Ranking</button>
         </form>
     </div>

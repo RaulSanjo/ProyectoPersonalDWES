@@ -5,5 +5,5 @@
         session_destroy();
         include "./../Vistas/cerrarSesion.html";
         //redirijo al login en 4 segundos de delay
-        header( "refresh:4;url=./../Controladores/controladorInicio.php" );
+        header( "refresh:4;url=./../index.php" );
     ?>
