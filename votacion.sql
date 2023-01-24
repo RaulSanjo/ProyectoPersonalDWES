@@ -39,7 +39,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`nombreUsuario`, `contraseña`, `haVotado`) VALUES
 ('admin', '81dc9bdb52d04dc20036dbd8313ed055', 0),
-('pepu', '81dc9bdb52d04dc20036dbd8313ed055', 0);
+('pipo', '81dc9bdb52d04dc20036dbd8313ed055', 0);
 
 -- --------------------------------------------------------
 
@@ -58,16 +58,16 @@ CREATE TABLE `votos` (
 
 INSERT INTO `votos` (`jugador`, `numeroVotos`) VALUES
 ('Bellingham', 13),
-('Camavinga', 7),
+('Camavinga', 9),
 ('E. Fernández', 14),
-('G. Ramos', 10),
+('G. Ramos', 8),
 ('Gravenberch', 4),
 ('Moukoko', 3),
 ('Musiala', 15),
 ('Pablo Gavi', 9),
 ('Pedri', 8),
 ('Phil Foden', 10),
-('Rafael Leão', 11),
+('Rafael Leão', 7),
 ('Xavi Simons', 0);
 
 --

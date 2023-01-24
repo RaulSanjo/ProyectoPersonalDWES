@@ -1,6 +1,19 @@
 <?php
 include "bd.php";
+/**
+ * Clase que permite la obtención y manipulacion de los votos
+ * 
+ * @author Raúl San José <raulsj@alumnos.iesgalileo.es>
+ */
 class VotosJugadores{
+    /**
+     * Funcion que añade el voto de un usuario a la base de datos
+     * 
+     * @static
+     * @access public
+     * @param string $usuario Nombre del usuario
+     * @return void
+     */
     public static function realizarVoto($usuario){
         //instancio un objeto de la clase Bd
         $bd = new Bd();
@@ -14,6 +27,13 @@ class VotosJugadores{
         //cierro la conexion
         $bd->cerrarConexion();
     }
+    /**
+     * Funcion que obtiene los votos realizados
+     * 
+     * @static
+     * @access public
+     * @return array Devuelve el array con los jugadores y sus votos
+     */
     public static function getVotos()
     {
         //instancio un objeto de la clase Bd
@@ -30,6 +50,7 @@ class VotosJugadores{
         }
         //cierro la conexion
         $bd->cerrarConexion();
+        // devuelvo el array
         return $jugadores;
     }
 }

@@ -1,6 +1,19 @@
 <?php
 include "bd.php";
+    /**
+     * Clase utilizada para la manipulación y verificación de usuarios
+     * 
+     * @author Raúl San José <raulsj@alumnos.iesgalileo.es>
+     */
     class Usuario{
+        /**
+         * Funcion que busca un usuario en la base de datos
+         * 
+         * @param mixed $nombre Nombre del usuario
+         * @return bool Devuelve true en caso de que exista, sino false
+         * @access public
+         * @static 
+         */
         public static function buscarUsuario($nombre){
             //instancio un objeto de la clase Bd   
             $bd = new Bd();
@@ -23,7 +36,16 @@ include "bd.php";
             $bd->cerrarConexion();
             return $existe;
         }
-
+        /**
+         * Función que verifica si es correcta la contraseña introducida por el usuario
+         * 
+         * @static
+         * @access public
+         * @param mixed $nombre Nombre del usuario
+         * @param mixed $contrasena Contraseña introducida
+         * @return bool Devuelve un booleano true si existe el usuario, sino false
+         */
+        
         public static function verificarContrasena($nombre,$contraseña){
             //instancio un objeto de la clase Bd 
             $bd = new Bd();
@@ -31,25 +53,35 @@ include "bd.php";
             $bd->crearConexion();
             //compruebo si existe el usuario
             if(Usuario::buscarUsuario($nombre)){
+                // variable donde recojo un booleano
+                $verificar=false;
                 //encriptar contraseña
                 $contraseña = md5($contraseña);
                 //ejecuto la consulta
                 $result=$bd->dataQuery("SELECT contraseña from usuarios where nombreUsuario='$nombre'");
                 while ($row = $result->fetch_assoc()) {
-                    //si las contraseñas coinciden devuelvo true; sino, false
+                    
+                    //si las contraseñas coinciden verificar=true;
                     if($row['contraseña'] == $contraseña){
-                        return true;
-                    }else{
-                        return false;
+                        $verificar= true;
                     }
                 }
             }else{
-                return 0;
+                return false;
             }
             //cierro la conexion
             $bd->cerrarConexion();
+            // devuelvo el booleano
+            return $verificar;
         }
-
+        /**
+         * Función que comprueba si un usuario ha realizado su voto
+         * 
+         * @static
+         * @access public
+         * @param string $nombre Nombre del usuario
+         * @return bool Devuelve true si el usuario ya ha votado, sino false
+         */
         public static function haVotado($nombre){
             //instancio un objeto de la clase Bd 
             $bd = new Bd();
@@ -57,17 +89,26 @@ include "bd.php";
             $bd->crearConexion();
             //ejecuto la consulta
             $result=$bd->dataQuery("SELECT haVotado from usuarios where nombreUsuario='$nombre'");
+            // recojo un booleano 
+            $votado = false;
             while ($row = $result->fetch_assoc()) {
                 //si el usuario ya ha votado devuelvo true
                 if($row['haVotado'] == "1"){
-                    return true;
-                }else{
-                    return false;
+                    $votado= true;
                 }
             }
             //cierro la conexion
             $bd->cerrarConexion();
+            // devuelvo el booleano
+            return $votado;
         }
+        /**
+         * Función que inicia la sesión de un usuario
+         * 
+         * @static
+         * @access public
+         * @return void
+         */
         public static function iniciarSesion(){
             //recojo los datos del formulario
             $nombre = $_REQUEST['usuario'];
@@ -89,12 +130,21 @@ include "bd.php";
                         header("Location: ./../Controladores/controladorHaVotado.php");
                     }  
                 } else {
+                    // saca el mensaje por pantalla
                     echo "<p>Contraseña incorrecta</p>";
                 }
             }else{
+                // saca el mensaje por pantalla
                 echo "<p>El usuario no existe</p>";
             }
         }
+        /**
+         * Funcion que inserta un usuario en la base de datos
+         * 
+         * @access public
+         * @static
+         * @return void
+         */
         public static function insertarUsuario(){
             //instancio un objeto de la clase Bd 
             $bd = new Bd();
@@ -114,9 +164,11 @@ include "bd.php";
                     //redirijo a otra pagina
                     header("Location: ./../Controladores/controladorInicioSesion.php");
                 } else {
+                    // saca el mensaje por pantalla
                     echo "<p class='msg'>Las contraseñas no coinciden</p>";
                 }
             }else{
+                // saca el mensaje por pantalla
                 echo "<p class='msg'>El usuario ya existe</p>";
             }
             //cierro la conexion
